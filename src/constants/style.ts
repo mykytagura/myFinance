@@ -11,8 +11,11 @@ export const COLORS = {
             tertiary: '#9ca3af', // gray-400
         },
         income: '#10b981', // green-500
+        incomeLight: '#e2fbe9',
         expense: '#ef4444', // red-500
+        expenseLight: '#fae3e3',
         border: '#e5e7eb', // gray-200
+        blue: '#4d7fe4'
     },
     dark: {
         primary: '#6366f1',
@@ -27,8 +30,11 @@ export const COLORS = {
             tertiary: '#64748b', // slate-500
         },
         income: '#34d399', // green-400
+        incomeLight: '#e2fbe9',
         expense: '#f87171', // red-400
+        expenseLight: '#fae3e3',
         border: '#334155', // slate-700
+        blue: '#4d7fe4'
     }
 } as const
 

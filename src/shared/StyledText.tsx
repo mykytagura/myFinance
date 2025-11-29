@@ -13,16 +13,17 @@ const StyledText = ({
     fontSize = 'base',
     color = 'primary',
     theme,
+    style,
     ...props
 }: StyledTextProps) => {
     const {theme: theme_} = useDarkTheme()
     return (
         <Text
             {...props}
-            style={{
+            style={[{
                 fontSize: FONT_SIZE[fontSize],
                 color: theme ?  COLORS[theme].text[color] : COLORS[theme_].text[color]
-            }}
+            }, style]}
         />
     );
 };

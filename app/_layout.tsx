@@ -2,13 +2,12 @@ import React from 'react';
 import {router, Tabs} from "expo-router";
 import {AntDesign, Feather, Ionicons} from "@expo/vector-icons";
 import {COLORS} from "@/src/constants/style";
-import {ButtonWithShadow} from "@/src/shared/Button";
+import {ButtonWithShadow} from "@/src/shared/StyledButton";
 import {useDarkTheme} from "@/src/hooks/useDarkTheme";
 
 const _layout = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const {isDark, theme} = useDarkTheme()
-    const backgroundColor = isDark ? COLORS.dark.background : COLORS.light.background;
+    const {theme} = useDarkTheme()
 
     return (
         <Tabs
@@ -16,8 +15,9 @@ const _layout = () => {
                 headerShown: false,
                 tabBarActiveTintColor: COLORS[theme].primary,
                 tabBarStyle: {
-                    backgroundColor,
-                    borderTopColor: isDark ? COLORS.dark.border : COLORS.light.border,
+                    backgroundColor: COLORS[theme].surface,
+                    borderTopColor: COLORS[theme].border,
+                    borderTopWidth: 1
                 },
             }}
         >

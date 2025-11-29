@@ -9,7 +9,7 @@ interface ButtonProps extends Omit<LinearGradientProps, "colors"> {
     activeOpacity?: number
 }
 
-export const Button = ({children, colors, style, activeOpacity = OPACITY.active, ...props}: ButtonProps) => {
+export const StyledButton = ({children, colors, style, activeOpacity = OPACITY.active, ...props}: ButtonProps) => {
     return (
         <TouchableOpacity activeOpacity={activeOpacity} onPress={props.onPress}>
             <LinearGradient
@@ -48,11 +48,15 @@ export const ButtonWithShadow = ({
                 shadowRadius,
                 elevation,
             }}>
-                <Button {...props}/>
+                <StyledButton {...props}/>
             </View>
         </TouchableOpacity>
     );
 };
+
+export const StyledTextButton = ({activeOpacity = 0.7, ...props}: ButtonProps) => {
+    return <StyledButton {...props} activeOpacity={activeOpacity} colors={['transparent', 'transparent']}/>
+}
 
 
 const styles = StyleSheet.create({
