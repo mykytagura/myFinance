@@ -7,7 +7,11 @@ import {ButtonWithShadow} from "@/src/shared/Button";
 const _layout = () => {
 
     return (
-        <Tabs>
+        <Tabs
+            screenOptions={{
+                tabBarActiveTintColor: COLORS.light.primary
+            }}
+        >
             <Tabs.Screen name={'index'} options={{ title: "Главная", tabBarIcon: ({color}) => <AntDesign name="home" size={24} color={color} /> }}/>
             <Tabs.Screen name={'statistics'} options={{ title: "Статистика", tabBarIcon: ({color}) => <Ionicons name="stats-chart" size={24} color={color} /> }}/>
             <Tabs.Screen name={'makeTransaction'} options={{
