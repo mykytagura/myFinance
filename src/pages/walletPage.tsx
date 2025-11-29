@@ -1,13 +1,14 @@
 import React from 'react';
-import {View, Text} from "react-native";
+import StyledSafeAreaView from "@/src/shared/StyledSafeAreaView";
+import StyledText from "@/src/shared/StyledText";
+import PageLayout from "@/src/shared/PageLayout";
 
 const WalletPage = () => {
     return (
-        <View>
-            <Text>
-                wallet page
-            </Text>
-        </View>
+        <PageLayout
+            headerRender={() => <StyledText>wallet</StyledText>}
+            bodyRender={() => <StyledText>wallet</StyledText>}
+        />
     );
 };
 

@@ -6,11 +6,12 @@ import {LinearGradient, LinearGradientProps} from "expo-linear-gradient";
 interface ButtonProps extends Omit<LinearGradientProps, "colors"> {
     colors?: LinearGradientProps["colors"]
     onPress?: TouchableOpacityProps['onPress']
+    activeOpacity?: number
 }
 
-export const Button = ({children, colors, style, ...props}: ButtonProps) => {
+export const Button = ({children, colors, style, activeOpacity = OPACITY.active, ...props}: ButtonProps) => {
     return (
-        <TouchableOpacity activeOpacity={OPACITY.active} onPress={props.onPress}>
+        <TouchableOpacity activeOpacity={activeOpacity} onPress={props.onPress}>
             <LinearGradient
                 style={[styles.button, style]}
                 colors={colors ? colors : [COLORS.light.primary, COLORS.light.secondary]}

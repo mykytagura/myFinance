@@ -50,3 +50,14 @@ export const BORDER_RADIUS = {
 export const OPACITY = {
     active: 0.9
 } as const
+
+export const FONT_SIZE = {
+    xs: 12,     // text-xs    0.75rem
+    sm: 14,     // text-sm    0.875rem
+    base: 16,   // text-base  1rem
+    lg: 18,     // text-lg    1.125rem
+    xl: 20,     // text-xl    1.25rem
+    '2xl': 24,  // text-2xl   1.5rem
+    '3xl': 30,  // text-3xl   1.875rem
+    '4xl': 36,  // text-4xl   2.25rem
+} as const;

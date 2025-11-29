@@ -1,13 +1,13 @@
 import React from 'react';
-import {Text, View} from "react-native";
+import StyledText from "@/src/shared/StyledText";
+import PageLayout from "@/src/shared/PageLayout";
 
 const MakeTransactionPage = () => {
     return (
-        <View>
-            <Text>
-                make transaction modal
-            </Text>
-        </View>
+        <PageLayout
+            headerRender={() => <StyledText>make transaction</StyledText>}
+            bodyRender={() => <StyledText>make transaction</StyledText>}
+        />
     );
 };
 

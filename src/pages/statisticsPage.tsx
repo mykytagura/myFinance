@@ -1,13 +1,14 @@
 import React from 'react';
-import {Text, View} from "react-native";
+import StyledSafeAreaView from "@/src/shared/StyledSafeAreaView";
+import StyledText from "@/src/shared/StyledText";
+import PageLayout from "@/src/shared/PageLayout";
 
 const StatisticsPage = () => {
     return (
-        <View>
-            <Text>
-                statistics page
-            </Text>
-        </View>
+        <PageLayout
+            headerRender={() => <StyledText>statistics</StyledText>}
+            bodyRender={() => <StyledText>statistics</StyledText>}
+        />
     );
 };
 
