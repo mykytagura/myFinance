@@ -1,24 +1,30 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import React from 'react';
+import {router, Tabs} from "expo-router";
+import {AntDesign, Feather, Ionicons} from "@expo/vector-icons";
+import {COLORS} from "@/src/constants/style";
+import {ButtonWithShadow} from "@/src/shared/Button";
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+const _layout = () => {
 
-export const unstable_settings = {
-  anchor: '(tabs)',
+    return (
+        <Tabs>
+            <Tabs.Screen name={'index'} options={{ title: "Главная", tabBarIcon: ({color}) => <AntDesign name="home" size={24} color={color} /> }}/>
+            <Tabs.Screen name={'statistics'} options={{ title: "Статистика", tabBarIcon: ({color}) => <Ionicons name="stats-chart" size={24} color={color} /> }}/>
+            <Tabs.Screen name={'makeTransaction'} options={{
+                title: 'Создать запись',
+                tabBarButton: () =>
+                    <ButtonWithShadow
+                        onPress={() => { router.push('/makeTransaction') }}
+                        style={{width: 60, height: 60, alignSelf: 'center', marginTop: -10}}
+                    >
+                        <AntDesign name="plus" size={24} color={COLORS.light.surface} />
+                    </ButtonWithShadow>
+            }}
+            />
+            <Tabs.Screen name={'wallet'} options={{ title: "Кошелек", tabBarIcon: ({color}) => <Ionicons name="wallet-outline" size={24} color={color} />}}/>
+            <Tabs.Screen name={'profile'} options={{ title: "Профиль", tabBarIcon: ({color}) => <Feather name="settings" size={24} color={color} />}}/>
+        </Tabs>
+    );
 };
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
-}
+export default _layout;
