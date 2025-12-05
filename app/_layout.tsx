@@ -1,13 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {router, Tabs} from "expo-router";
 import {AntDesign, Feather, Ionicons} from "@expo/vector-icons";
 import {COLORS} from "@/src/constants/style";
 import {ButtonWithShadow} from "@/src/shared/StyledButton";
 import {useDarkTheme} from "@/src/hooks/useDarkTheme";
+import database from '@/src/db'
 
 const _layout = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const {theme} = useDarkTheme()
+
+    // // eslint-disable-next-line react-hooks/rules-of-hooks
+    // useEffect(() => {
+    //     const initDB = async () => {
+    //         await database.init()
+    //     }
+    //
+    //     initDB()
+    // }, []);
 
     return (
         <Tabs
