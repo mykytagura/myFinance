@@ -5,6 +5,7 @@ export const COLORS = {
         accent: '#ec4899', // pink-500
         background: '#f9fafb', // gray-50
         surface: '#ffffff',
+        surfaceLight: '#f3f4f6',
         text: {
             primary: '#111827', // gray-900
             secondary: '#6b7280', // gray-500
@@ -15,7 +16,8 @@ export const COLORS = {
         expense: '#ef4444', // red-500
         expenseLight: '#fae3e3',
         border: '#e5e7eb', // gray-200
-        blue: '#4d7fe4'
+        blue: '#4d7fe4',
+        grey: '#6b7280'
     },
     dark: {
         primary: '#6366f1',
@@ -34,7 +36,8 @@ export const COLORS = {
         expense: '#f87171', // red-400
         expenseLight: '#fae3e3',
         border: '#334155', // slate-700
-        blue: '#4d7fe4'
+        blue: '#4d7fe4',
+        grey: '#6b7280'
     }
 } as const
 
