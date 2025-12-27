@@ -4,21 +4,29 @@ import PageLayout from "@/src/shared/PageLayout";
 import {StyleSheet, View} from "react-native";
 import Card from "@/src/shared/Card";
 import ButtonGroup from "@/src/shared/ButtonGroup";
-import {COLORS, SPACING} from "@/src/constants/style";
+import {BORDER_RADIUS, COLORS, SPACING} from "@/src/constants/style";
 import StatisticsCategory from "@/src/shared/StatisticsCategory";
 import {useDarkTheme} from "@/src/hooks/useDarkTheme";
-import {useButtonGroup} from "@/src/hooks/useButtonGroup";
+import {StyledButton} from "@/src/shared/StyledButton";
 
 const Header = () => {
     return <StyledText theme={'dark'} fontSize={'3xl'} fontWeight={'600'} style={{marginTop: 8}}>Статистика</StyledText>
 }
 
+const options = [{label: 'Неделя', value: 'week'}, {label: 'Месяц', value: 'month'}, {label: 'Год', value: 'year'}]
 const Body = () => {
     const {theme} = useDarkTheme()
-    const {buttons} = useButtonGroup(['Неделя', 'Месяц', 'Год'], [COLORS[theme].primary, COLORS[theme].primary], [COLORS[theme].grey, COLORS[theme].grey])
     return <View style={style.body}>
         <Card>
-            <ButtonGroup buttons={buttons}/>
+            <ButtonGroup
+                autoSelect
+                data={options}
+                renderButton={({text, active, onPress}) =>
+                    <StyledButton style={style.button} onPress={onPress} colors={active ? [COLORS[theme].primary, COLORS[theme].primary] : [COLORS[theme].grey, COLORS[theme].grey]}>
+                        <StyledText theme={'dark'}>{text}</StyledText>
+                    </StyledButton>
+                }
+            />
         </Card>
         <View style={style.bodyInner}>
             <Card style={style.statisticsCategory}>
@@ -54,6 +62,9 @@ const style = StyleSheet.create({
     },
     statisticsCategory: {
         rowGap: SPACING.lg
+    },
+    button: {
+        borderRadius: BORDER_RADIUS.sm
     }
 })
 

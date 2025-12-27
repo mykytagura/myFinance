@@ -378,6 +378,7 @@ class Database {
 
         await this.db!.runAsync(
             `UPDATE settings SET ${fields}, updated_at = datetime('now') WHERE id = 1`,
+            //@ts-ignore
             values
         );
     }

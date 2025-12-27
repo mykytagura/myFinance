@@ -16,6 +16,7 @@ export const COLORS = {
         expense: '#ef4444', // red-500
         expenseLight: '#fae3e3',
         border: '#e5e7eb', // gray-200
+        border_alt: '#e5e7eb', // gray-200
         blue: '#4d7fe4',
         grey: '#6b7280'
     },
@@ -36,6 +37,7 @@ export const COLORS = {
         expense: '#f87171', // red-400
         expenseLight: '#fae3e3',
         border: '#334155', // slate-700
+        border_alt: '#3b4c5e', // stale-600
         blue: '#4d7fe4',
         grey: '#6b7280'
     }

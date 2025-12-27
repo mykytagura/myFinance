@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, StyleSheet, TouchableOpacityProps, View} from "react-native";
-import {BORDER_RADIUS, COLORS, OPACITY} from "@/src/constants/style";
+import {BORDER_RADIUS, COLORS, OPACITY, SPACING} from "@/src/constants/style";
 import {LinearGradient, LinearGradientProps} from "expo-linear-gradient";
 
 export interface ButtonProps extends Omit<LinearGradientProps, "colors"> {
@@ -32,13 +32,13 @@ interface ButtonWithShadowProps extends ButtonProps {
 }
 
 export const ButtonWithShadow = ({
-                                     shadowColor = COLORS.light.secondary,
-                                     shadowOffset = {width: 0, height: 10},
-                                     shadowOpacity = 1,
-                                     shadowRadius = 10,
-                                     elevation = 10,
-                                     ...props
-                                 }: ButtonWithShadowProps) => {
+    shadowColor = COLORS.light.secondary,
+    shadowOffset = {width: 0, height: 10},
+    shadowOpacity = 1,
+    shadowRadius = 10,
+    elevation = 10,
+    ...props
+}: ButtonWithShadowProps) => {
     return (
         <TouchableOpacity>
             <View style={{
@@ -64,5 +64,7 @@ const styles = StyleSheet.create({
         borderRadius: BORDER_RADIUS.lg,
         alignItems: 'center',
         justifyContent: 'center',
+        paddingVertical: SPACING.sm,
+        paddingHorizontal: SPACING.sm
     }
 })

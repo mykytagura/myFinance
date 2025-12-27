@@ -1,31 +1,36 @@
-import React from 'react';
-import {StyleSheet, View} from "react-native";
-import {ButtonProps, StyledButton} from "@/src/shared/StyledButton";
-import StyledText from "@/src/shared/StyledText";
+import React, {ReactNode, useState} from 'react';
+import {StyleSheet, View, ViewProps} from "react-native";
 
-export interface ButtonGroupProps {
-    buttons: (ButtonProps & {text: string})[]
+export interface ButtonGroupProps extends ViewProps{
+    renderButton: (params: {text: string, active: boolean, onPress: () => void}) => ReactNode
+    data: { label: string, value: string }[],
+    onChange?: (value: string) => void
+    fullWidth?: boolean
+    autoSelect?: boolean
 }
 
-const ButtonGroup = ({buttons}: ButtonGroupProps) => {
+const ButtonGroup = ({renderButton, data, onChange, fullWidth, autoSelect, ...props}: ButtonGroupProps) => {
+    const [active, setActive] = useState( autoSelect ? data[0].value : null)
     return (
-        <View style={style.buttonGroup}>
-            {buttons.map(button => (
-                    <StyledButton style={style.button} key={button.text} {...button}>
-                        <StyledText theme={'dark'} fontWeight={'500'}>{button.text}</StyledText>
-                    </StyledButton>
-                )
+        <View style={[style.buttonGroup, props.style]} {...props}>
+            {data.map(({label, value}) =>
+                <View
+                    style={fullWidth && {flex: 1}}
+                    key={label}
+                >
+                    {renderButton({text: label, active: active === value, onPress: () => {
+                            setActive(value)
+                            if (onChange) {
+                                onChange(value)
+                            }
+                        }})}
+                </View>
             )}
         </View>
     );
 };
 
 const style = StyleSheet.create({
-    button: {
-        paddingHorizontal: 12,
-        paddingVertical: 8,
-        borderRadius: 12,
-    },
     buttonGroup: {
         flexDirection: 'row',
         columnGap: 8
