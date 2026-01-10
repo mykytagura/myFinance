@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import StyledText from "@/src/shared/StyledText";
 import PageLayout from "@/src/shared/PageLayout";
 import {StyleSheet, View} from "react-native";

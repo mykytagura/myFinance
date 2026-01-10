@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import StyledText from "@/src/shared/StyledText";
 import {useDarkTheme} from "@/src/hooks/useDarkTheme";
-import {Alert, ScrollView, StatusBar, StyleSheet, View} from "react-native";
+import {ScrollView, StyleSheet} from "react-native";
 import {COLORS, SPACING} from "@/src/constants/style";
 import StyledInput from "@/src/shared/StyledInput";
 import StyledPicker from "@/src/shared/StyledPicker";
