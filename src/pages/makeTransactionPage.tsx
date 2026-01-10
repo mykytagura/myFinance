@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import StyledText from "@/src/shared/StyledText";
 import {useDarkTheme} from "@/src/hooks/useDarkTheme";
-import {StyleSheet, View} from "react-native";
+import {Alert, ScrollView, StatusBar, StyleSheet, View} from "react-native";
 import {COLORS, SPACING} from "@/src/constants/style";
 import StyledInput from "@/src/shared/StyledInput";
 import StyledPicker from "@/src/shared/StyledPicker";
@@ -14,30 +14,14 @@ const MakeTransactionPage = () => {
     const [card, setCard] = useState('')
     const [transaction, setTransaction] = useState('')
     return (
-        <View style={[style.modal, {backgroundColor: COLORS[theme].surface}]}>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={[style.modal, {backgroundColor: COLORS[theme].surface}]}
+            contentContainerStyle={{rowGap: style.modal.rowGap, paddingBottom: SPACING.xl}}
+        >
             <StyledText fontWeight={'600'} fontSize={'xl'} style={style.heading}>Добавить операцию</StyledText>
             <StyledInput label={'Название'} placeholder={'Продукты'} />
             <StyledInput label={'Сумма (₴)'} placeholder={'0.00'} keyboardType={'numeric'} />
-            <StyledRadioButtons
-                label={'Тип транзакции'}
-                fullWidth
-                onChange={setTransaction}
-                renderButton={({text, active, onPress}) => (
-                    <StyledButton
-                        colors={active
-                            ? text === 'Доход' ? [COLORS[theme].income, COLORS[theme].income] : [COLORS[theme].expense, COLORS[theme].expense]
-                            : [COLORS[theme].grey, COLORS[theme].grey]}
-                        onPress={onPress}
-                        style={{paddingVertical: SPACING.md}}
-                    >
-                        <StyledText theme={'dark'} fontSize={'lg'} fontWeight={'600'}>{text}</StyledText>
-                    </StyledButton>
-                )}
-                data={[
-                    {label: 'Доход', value: 'income'},
-                    {label: 'Расход', value: 'expense'}
-                ]}
-            />
             <StyledPicker
                 label="Категория"
                 placeholder="Выберите категорию"
@@ -60,7 +44,29 @@ const MakeTransactionPage = () => {
                 ]}
                 onChange={(value) => setCard(value.toString())}
             />
-        </View>
+            <StyledRadioButtons
+                label={'Тип транзакции'}
+                fullWidth
+                onChange={setTransaction}
+                renderButton={({text, active, onPress}) => (
+                    <StyledButton
+                        colors={active
+                            ? text === 'Доход' ? [COLORS[theme].income, COLORS[theme].income] : [COLORS[theme].expense, COLORS[theme].expense]
+                            : [COLORS[theme].grey, COLORS[theme].grey]}
+                        onPress={onPress}
+                        style={{paddingVertical: SPACING.md}}
+                    >
+                        <StyledText theme={'dark'} fontSize={'lg'} fontWeight={'600'}>{text}</StyledText>
+                    </StyledButton>
+                )}
+                data={[
+                    {label: 'Доход', value: 'income'},
+                    {label: 'Расход', value: 'expense'}
+                ]}
+            />
+            <StyledInput label={'Описание'} />
+            <StyledInput label={'Дата'} placeholder={'01/01/2025'} />
+        </ScrollView>
     );
 };
 
